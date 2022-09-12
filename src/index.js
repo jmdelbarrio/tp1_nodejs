@@ -1,10 +1,31 @@
 const express = require('express');
-const app = express();
-app.use(express.json());
-app.use(express.urlencoded({extended:true}));
 
+const globalConstants = require('./const/globalConstants');
+const routerConfig = require('./routes/index.routes');
+
+const configuracionApi = (app)=>{
+    app.use(express.json());
+    app.use(express.urlencoded({extended:true}));
+
+    return;
+}
+
+const configuracionRouter= (app)=>{
+    app.use('api/',routerConfig.rutas_init());    
+}
+
+const init=()=>{    
+    const app = express();
+    configuracionApi(app);   
+    
+    configuracionRouter(app);
+
+    app.listen(globalConstants.PORT);    
+    console.log('La aplicación se está ejecutando en el puerto '+globalConstants.PORT);
+}
+init();
 // -------------- RUTAS --------------
-
+/*
 // retorna el paciente con ID :id si es que existe
 app.get('/pacientes/:id', (req, res) => { // req: request, res: response
     res.send('Retorna el paciente ID: ' + req.params.id); 
@@ -49,10 +70,4 @@ app.get('/prestaciones', (req, res) => { // req: request, res: response
 app.post('/prestacion', (req, res) => { // req: request, res: response    
     res.send('Alta de prestacion OK\nNombre: ' + req.body.prestacion);    
 });
-
-// ---------- PUERTO ----------
-app.listen(5000); // escucha en el puerto 5000
-console.log('Servidor corriendo en el puerto 5000');
-
-
-// COMENTARIOS
+*/
