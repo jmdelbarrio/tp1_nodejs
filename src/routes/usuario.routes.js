@@ -4,9 +4,9 @@ const router = require("express").Router();
 
 const usuarioController = require('../controllers/usuario.controller');
 
+router.get('/:idUsuario',usuarioController.listarInfo);
+
 router.get('/',usuarioController.prueba);
 router.post('/',usuarioController.crear);
-
-router.get('/:idUsuario',usuarioController.listarInfo);
 
 module.exports = router;

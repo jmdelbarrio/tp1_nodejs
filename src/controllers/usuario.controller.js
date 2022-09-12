@@ -1,6 +1,6 @@
 //CONTROLADOR DE USUARIO
 
-module.exports ={
+module.exports = {
     listar: async (req,res) =>{
         
     },
@@ -8,7 +8,14 @@ module.exports ={
         
     },
     listarInfo: async (req,res) =>{
-        
+        try {
+            console.log('ejecutando listarInfo');
+            res.json({
+                message: "consume listarInfo"
+            })
+        } catch (error) {
+            console.log(error);
+        }
     },
     prueba: async (req,res) =>{
         try {
