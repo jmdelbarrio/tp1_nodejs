@@ -1,11 +1,14 @@
 //SE ENCARGA DE CONECTAR TODAS LAS RUTAS 
 const { Router } = require('express');
 
-const usuarioRoutes = require("./usuario.routes");
-
+const medicosRoutes = require("./medico.routes");
+const pacientesRoutes = require("./paciente.routes");
+const prestacionesRoutes = require("./prestacion.routes");
 const rutas_init = () =>{
-    const router = Router();
-    router.use("/usuarios", usuarioRoutes);
+    const router = Router();    
+    router.use("/medicos", medicosRoutes);
+    router.use("/pacientes", pacientesRoutes);
+    router.use("/prestaciones", prestacionesRoutes);
 
     return router;
 }
