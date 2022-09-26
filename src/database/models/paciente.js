@@ -20,6 +20,10 @@ module.exports = (sequelize,DataTypes)=>{
             type: DataTypes.STRING,
             allowNull: false
         },       
+        email:{
+            type: DataTypes.STRING,
+            allowNull: true
+        }, 
         createdAt:{
             type: DataTypes.DATE,
             field: 'created_at',
