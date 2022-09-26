@@ -1,6 +1,7 @@
 //CONTROLADOR DE PACIENTE
 
 const models = require('../database/models/index');
+const errors = require('../const/errors');
 
 module.exports = {
     listar: async (req,res) =>{
@@ -44,13 +45,16 @@ module.exports = {
             })
         }      
     },
-    listarInfo: async (req,res) =>{
+    listarInfo: async (req,res, next) =>{
         try {
             const paciente = await models.paciente.findOne({
                 where:{
                     id: req.params.idPaciente
                 }
             })
+
+            if(!paciente) return next(errors.PacienteInexistente);
+
             res.json({                
                 success: true,
                 message: "Listar información de 1 - ID:" +req.params.idPaciente,

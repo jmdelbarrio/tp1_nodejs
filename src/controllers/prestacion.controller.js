@@ -1,6 +1,7 @@
 //CONTROLADOR DE PRESTACION
 
 const models = require('../database/models/index');
+const errors = require('../const/errors');
 
 module.exports = {
     listar: async (req,res) =>{
@@ -43,13 +44,16 @@ module.exports = {
             })
         }             
     },
-    listarInfo: async (req,res) =>{
+    listarInfo: async (req,res, next) =>{
         try {
             const prestacion = await models.prestacion.findOne({
                 where:{
                     id: req.params.idPrestacion
                 }
             })
+            
+            if(!prestacion) return next(errors.PrestacionInexistente);
+
             res.json({                
                 success: true,
                 message: "Listar información de 1 - ID:" +req.params.idPrestacion,
