@@ -6,7 +6,7 @@ const errors = require('../const/errors');
 module.exports = {
     listar: async (req,res) =>{
         try {                        
-            const medicos = await models.medico.findAll();
+            const medicos = await models.medico.findAll({include: models.prestacion});
             res.json({
                 success: true,
                 message: "Listar información de todos",
@@ -30,9 +30,9 @@ module.exports = {
             const medico = await models.medico.create({
                 nombres: req.body.nombres,
                 apellido: req.body.apellido,
-                prestacionId: req.body.prestacionId,
-                
+                prestacionId: req.body.prestacionId,                    
             })
+            
 
             res.json({
                 success: true,
@@ -57,7 +57,8 @@ module.exports = {
             const medico = await models.medico.findOne({
                 where:{
                     id: req.params.idMedico
-                }
+                },
+                include: models.prestacion
             })
 
             if(!medico) return next(errors.MedicoInexistente);
