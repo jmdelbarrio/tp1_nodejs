@@ -15,7 +15,13 @@ module.exports = {
                 }
             })
         } catch (error) {
-            console.log(error);
+            res.json({
+                success: false,                
+                data:{
+                    error: error.name,
+                    message: error.message
+                }
+            })
         }            
     },
     crear: async (req,res) =>{
@@ -38,10 +44,10 @@ module.exports = {
         } catch (error) {
             console.log(error);
             res.json({
-                success: false,
-                message: "Error al crear Medico",
+                success: false,                
                 data:{
-                    error: error.parent.detail
+                    error: error.name,
+                    message: error.message
                 }
             })
         }        
@@ -66,10 +72,10 @@ module.exports = {
         } catch (error) {
             console.log(error);
             res.json({
-                success: false,
-                message: "Error al buscar Medico",
+                success: false,                
                 data:{
-                    error: error.name
+                    error: error.name,
+                    message: error.message
                 }
             })
         }

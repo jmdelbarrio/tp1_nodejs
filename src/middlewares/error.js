@@ -40,6 +40,11 @@ module.exports = function(err, req, res, next){
         response.error.message = errors['ValidationError'].message;
     }
 
+    if(err.name === 'SequelizeDatabaseError' && err.message.indexOf('out of range')== 0){
+        response.error.code = errors['ValidationError'].code;
+        response.error.message = errors['ValidationError'].message;
+    }
+
     if(err.name === 'SequelizeConnectionError'){
         response.error.code = 500;
         response.error.message = 'Internal server error';

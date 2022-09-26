@@ -15,7 +15,13 @@ module.exports = {
                 }
             })
         } catch (error) {
-            console.log(error);
+            res.json({
+                success: false,                
+                data:{
+                    error: error.name,
+                    message: error.message
+                }
+            })
         }               
     },
     crear: async (req,res) =>{
@@ -36,10 +42,10 @@ module.exports = {
         } catch (error) {
             console.log(error);
             res.json({
-                success: false,
-                message: "Error al crear Prestacion",
+                success: false,                
                 data:{
-                    error: error//.name
+                    error: error.name,
+                    message: error.message
                 }
             })
         }             
@@ -55,8 +61,7 @@ module.exports = {
             if(!prestacion) return next(errors.PrestacionInexistente);
 
             res.json({                
-                success: true,
-                message: "Listar información de 1 - ID:" +req.params.idPrestacion,
+                success: true,                
                 data:{
                     prestacion: prestacion
                 }
@@ -64,10 +69,10 @@ module.exports = {
         } catch (error) {
             console.log(error);
             res.json({
-                success: false,
-                message: "Error al buscar Prestacion",
+                success: false,                
                 data:{
-                    error: error.name
+                    error: error.name,
+                    message: error.message
                 }
             })
         }
