@@ -23,13 +23,13 @@ module.exports = {
             const medico = await models.medico.create({
                 nombres: req.body.nombres,
                 apellido: req.body.apellido,
-                prestacion: req.body.prestacion,
+                prestacionId: req.body.prestacionId,
                 
             })
 
             res.json({
                 success: true,
-                message: "Crear Medico - Nombres: "+req.body.nombres+" Apellido: "+req.body.apellido+" ID Prestacion: "+req.body.prestacion,
+                message: "Crear Medico - Nombres: "+req.body.nombres+" Apellido: "+req.body.apellido+" ID Prestacion: "+req.body.prestacionId,
                 data:{
                     id: medico.id
                 }
@@ -40,7 +40,7 @@ module.exports = {
                 success: false,
                 message: "Error al crear Medico",
                 data:{
-                    error: error//.name
+                    error: error.parent.detail
                 }
             })
         }        

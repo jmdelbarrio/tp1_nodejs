@@ -19,11 +19,7 @@ module.exports = (sequelize,DataTypes)=>{
         apellido:{
             type: DataTypes.STRING,
             allowNull: false
-        },
-        prestacion:{
-            type: DataTypes.BIGINT,            
-            allowNull: false
-        },
+        },        
         createdAt:{
             type: DataTypes.DATE,
             field: 'created_at',
@@ -47,7 +43,7 @@ module.exports = (sequelize,DataTypes)=>{
     });
 
     Medico.associate = models => {
-        Medico.hasMany(models.prestacion) 
+        //Medico.hasMany(models.prestacion) 
     }
 
     return Medico;

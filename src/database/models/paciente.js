@@ -43,7 +43,7 @@ module.exports = (sequelize,DataTypes)=>{
     });
 
     Paciente.associate = models => {
-        //Paciente.hasMany(models.prestacion) 
+        //Paciente.hasMany(models.paciente) 
     }
 
     return Paciente;
