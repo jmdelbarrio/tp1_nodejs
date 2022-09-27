@@ -19,5 +19,8 @@ module.exports ={
         code:1012,
         message:'La prestacion no existe'
     },
-
+    'UsuarioInexistente':{
+        code:1012,
+        message:'El usuario no existe'
+    },
 }
