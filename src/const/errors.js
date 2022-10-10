@@ -29,7 +29,7 @@ module.exports ={
     },
     'UsuarioErroneo': {
         code: 1015,
-        message: 'El par{ametro de usuario no corresponde con el usuario logueado'
+        message: 'El parámetro de usuario no corresponde con el usuario logueado'
     },
     'CredencialesInvalidas': {
         code: 1020,
