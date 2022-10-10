@@ -5,6 +5,7 @@ let crearUsuario= Joi.object({
     apellidos: Joi.string().required(),
     email: Joi.string().email().optional(),
     telefono: Joi.string().optional(),
+    password: Joi.string().required(),
 
 });
 

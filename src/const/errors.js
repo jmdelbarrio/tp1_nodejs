@@ -20,7 +20,27 @@ module.exports ={
         message:'La prestacion no existe'
     },
     'UsuarioInexistente':{
-        code:1012,
+        code:1013,
         message:'El usuario no existe'
     },
+    'ArchivoInexistente': {
+        code: 1014,
+        message: 'El archivo no existe'
+    },
+    'UsuarioErroneo': {
+        code: 1015,
+        message: 'El par{ametro de usuario no corresponde con el usuario logueado'
+    },
+    'CredencialesInvalidas': {
+        code: 1020,
+        message: 'Credenciales inválidas'
+    },
+    'UsuarioNoAutorizado': {
+        code: 1021,
+        message: 'Usuario no autorizado'
+    },
+    'SesionExpirada': {
+        code: 1022,
+        message: 'Sesión expirada'
+    }
 }

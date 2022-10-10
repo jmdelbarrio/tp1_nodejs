@@ -5,13 +5,23 @@ const medicosRoutes = require("./medico.routes");
 const pacientesRoutes = require("./paciente.routes");
 const prestacionesRoutes = require("./prestacion.routes");
 const usuariosRoutes = require("./usuario.routes");
+const authRoutes = require("./auth.routes")
+
+const decodeJWT = require("../middlewares/decodeJWT")
+
 const rutas_init = () =>{
     const router = Router();    
+    router.use("/usuarios", decodeJWT, usuariosRoutes);
     router.use("/medicos", medicosRoutes);
     router.use("/pacientes", pacientesRoutes);
     router.use("/prestaciones", prestacionesRoutes);
-    router.use("/usuarios", prestacionesRoutes);
     return router;
 }
-
-module.exports = { rutas_init };
+const rutas_auth = () => {
+    const router = Router();
+  
+    router.use("/auth", authRoutes);
+  
+    return router;
+}
+module.exports = { rutas_init, rutas_auth  };

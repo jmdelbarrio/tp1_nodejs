@@ -5,29 +5,25 @@ const { sequelize } = require(".")
 
 module.exports = (sequelize,DataTypes)=>{
 
-    let Usuario = sequelize.define('usuario',{
+    let ArchivoUsuario = sequelize.define('archivo_usuario',{
         id:{
             type: DataTypes.BIGINT,
             autoIncrement: true,            
             primaryKey: true,
             allowNull: false
         },
-        nombres:{
+        nombre:{
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
-        apellido:{
+        file:{
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },       
-        email:{
+        original_name:{
             type: DataTypes.STRING,
             allowNull: true
         }, 
-        password: {
-            type: DataTypes.STRING,
-            allowNull: false
-          },
         createdAt:{
             type: DataTypes.DATE,
             field: 'created_at',
@@ -50,9 +46,9 @@ module.exports = (sequelize,DataTypes)=>{
         freezeTableName: true,
     });
 
-    Usuario.associate = models => {
-        Usuario.hasMany(models.archivo_usuario) 
+    ArchivoUsuario.associate = models => {
+        ArchivoUsuario.belongsTo(models.usuario) 
     }
 
-    return Usuario;
+    return ArchivoUsuario;
 }
