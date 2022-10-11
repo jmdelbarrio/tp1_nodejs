@@ -83,7 +83,7 @@ module.exports = {
     
     subirArchivo: async (req, res, next) => {
         try {           
-            let usuarioId = req.body.usuarioId;
+            let usuarioId = res.locals.usuario.id;//req.body.usuarioId;
             //verifico si existe el usuario
             const usuario = await models.usuario.findOne({
                 where: {
@@ -92,13 +92,13 @@ module.exports = {
             })
             if (!usuario) return next(errors.UsuarioInexistente)
             //Agrego validacion para verificar que el parametro usuarioId corresponda con el usuario que obtuvo el token
-            if(usuarioId !== usuario.id) return next(errors.UsuarioErroneo);
+            //if(usuarioId !== usuario.id) return next(errors.UsuarioErroneo);
 
 
             // busco el archivo del usuario
             const ar = await models.archivo_usuario.findOne({
                 where: {
-                    usuarioId: req.body.usuarioId,
+                    usuarioId: usuarioId,
                     nombre: req.body.nombre
                 }
             })

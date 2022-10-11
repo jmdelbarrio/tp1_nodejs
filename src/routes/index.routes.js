@@ -12,9 +12,9 @@ const decodeJWT = require("../middlewares/decodeJWT")
 const rutas_init = () =>{
     const router = Router();    
     router.use("/usuarios", decodeJWT, usuariosRoutes);
-    router.use("/medicos", medicosRoutes);
-    router.use("/pacientes", pacientesRoutes);
-    router.use("/prestaciones", prestacionesRoutes);
+    router.use("/medicos", decodeJWT, medicosRoutes);
+    router.use("/pacientes", decodeJWT, pacientesRoutes);
+    router.use("/prestaciones", decodeJWT, prestacionesRoutes);
     return router;
 }
 const rutas_auth = () => {
